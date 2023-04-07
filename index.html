@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
-<script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+    integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+    crossorigin="anonymous"></script>
 <script>
-    const socket = io('http://localhost:3000');
+    // const socket = io('https://dev.api.telemedecine.mediot.io/chat', {  transports: ["websocket"] , auth: { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4MDgwMDQ1OSwiZXhwIjoxNjgwODAyMjU5fQ.TEAfN2LvV1zLh3hKkuWHWlQeIKAA3UMsanaXbtmCDeM' }, });
+    // const socket = io('https://dev.api.telemedecine.mediot.io/chat', {  transports: ["polling"] });
+    // const socket = io('http://34.173.135.221:3000/');
+    const socket = io('http://localhost:3000/', {transports: ["polling"]});
     socket.on('connect', () => {
         console.log('connected');
+    });
+
+    socket.on('disconnect', (reason) => {
+        console.log('disconnect', reason);
     });
 
     socket.on('message', (data) => {
         console.log(data);
     });
 </script>
+
 </html
